@@ -10,7 +10,7 @@ on:
   
   schedule:
     # https://crontab.guru/every-hour
-    - cron: '15 1 * * *'
+    - cron: '*/6 * * * *'
 jobs:
   merge_schedule:
     runs-on: ubuntu-latest
