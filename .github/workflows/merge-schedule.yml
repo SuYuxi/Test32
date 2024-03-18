@@ -8,7 +8,7 @@ on:
       - synchronize
   schedule:
     # https://crontab.guru/every-hour
-    - cron: '55 * * * *'
+    - cron: '53 * * * *'
 jobs:
   merge_schedule:
     runs-on: ubuntu-latest
