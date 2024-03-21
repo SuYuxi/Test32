@@ -1,16 +1,18 @@
 ---
 name: Merge Schedule
 on:
+  workflow_dispatch:
   pull_request:
     types:
       - opened
       - edited
       - synchronize
   schedule:
-    # https://crontab.guru/every-hour
-    - cron: '45 * * * *'
+      - cron: "5 * * * *"
+
 jobs:
   merge_schedule:
+    if: contains(github.event.schedule.labels.*.name, 'auto schedule merging')
     runs-on: ubuntu-latest
     steps:
       - uses: gr2m/merge-schedule-action@v2
