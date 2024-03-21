@@ -8,11 +8,11 @@ on:
       - edited
       - synchronize
   schedule:
-      - cron: "5/* * * * *"
+      - cron: "*/5 * * * *"
 
 jobs:
   merge_schedule:
-    if: contains(github.event.schedule.labels.*.name, 'auto schedule merging')
+    if: github.event_name == 'schedule' || github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'auto schedule merging')
     runs-on: ubuntu-latest
     steps:
       - uses: gr2m/merge-schedule-action@v2
